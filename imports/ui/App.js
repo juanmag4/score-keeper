@@ -8,9 +8,11 @@ export class App extends React.Component {
     render() {
         return (
             <div>
-                <TitleBar title={this.props.title} subTitle="Design by me"/>
-                <AddPlayer/>
-                <PlayerList players={this.props.players}/>
+                <TitleBar title={this.props.title}/>
+                <div className="wrapper">
+                    <AddPlayer/>
+                    <PlayerList players={this.props.players}/>
+                </div>
             </div>
         );
     }
