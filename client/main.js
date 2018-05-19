@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { Meteor } from "meteor/meteor";
-import { Players } from "../imports/api/players";
+import { Players, calculatePlayerPositions } from "../imports/api/players";
 import { Tracker } from "meteor/tracker";
 import { App } from "../imports/ui/App";
 
@@ -11,8 +11,9 @@ Meteor.startup(() => {
             sort: {
                 score: -1
             }
-        }).fetch()
+        }).fetch();
+        let positionedPlayers = calculatePlayerPositions(PLAYERS);
         let title = "Score Keep"
-        ReactDOM.render(<App title={title} players={PLAYERS}/>, document.getElementById('app'));
+        ReactDOM.render(<App title={title} players={positionedPlayers}/>, document.getElementById('app'));
     });
 });
